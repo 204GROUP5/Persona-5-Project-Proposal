@@ -68,14 +68,22 @@ def game():
                 print("{}) {}".format(teammates[i][k],types[teammates[i][k]]))
             elementUsed = getInput(teammates[i],0)
 
+            print("Targeted Enemy {} with {}".format(enemyTargeted+1,types[elementUsed]))
+
             if enemyWeak[enemyTargeted] == elementUsed:
                 enemyHit[enemyTargeted] = True
+                print("That was the enemy's weakness!")
 
                 allHit = True #after a weakness is hit,
                     #exit if all enemies have been hit by a weakness
                 for i in range(0,numE):
                     if enemyHit[i] == False:
                         allHit = False
+
+            else:
+                print("It had little effect.")
+
+        roundCount += 1
 
 if __name__ == '__main__':
     game()
