@@ -36,13 +36,19 @@ def game():
 
     #teammate values
     teammates = [[],[],[],[]]
-    element = 2
+    ceiling = 7
     
     for i in range(len(teammates)-1):
         teammates[i].append(0)
         teammates[i].append(1)
-        teammates[i].append(element)
-        element += 1
+        
+        newElement = (random.randint(0,ceiling) + 2)
+        for j in range(i):
+            if newElement == teammates[j][2]:
+                newElement += 1
+        
+        teammates[i].append(newElement)
+        ceiling -= 1
 
     for j in range(10):
         teammates[3].append(j)
