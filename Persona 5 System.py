@@ -59,7 +59,7 @@ def game():
             enemyTargeted = getInput(enemyArray,0)
             
             for k in range(len(teammates[i])):
-                print("{}) {}".format(k,types[j]))
+                print("{}) {}".format(teammates[i][k],types[teammates[i][k]]))
             elementUsed = getInput(teammates[i],0)
 
             if enemyWeak[enemyTargeted] == elementUsed:
@@ -68,7 +68,7 @@ def game():
                 allHit = True #after a weakness is hit,
                     #exit if all enemies have been hit by a weakness
                 for i in range(0,numE):
-                    if numE[i] == False:
+                    if enemyHit[i] == False:
                         allHit = False
 
 if __name__ == '__main__':
