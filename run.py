@@ -48,16 +48,52 @@ z = FancyPropositions("z")
 #  There should be at least 10 variables, and a sufficiently large formula to describe it (>50 operators).
 #  This restriction is fairly minimal, and if there is any concern, reach out to the teaching staff to clarify
 #  what the expectations are.
-def example_theory():
-    # Add custom constraints by creating formulas with the variables you created. 
-    E.add_constraint((a | b) & ~x)
-    # Implication
-    E.add_constraint(y >> z)
-    # Negate a formula
-    E.add_constraint((x & y).negate())
-    # You can also add more customized "fancy" constraints. Use case: you don't want to enforce "exactly one"
-    # for every instance of BasicPropositions, but you want to enforce it for a, b, and c.:
-    constraint.add_exactly_one(E, a, b, c)
+
+def example_theroy():
+    
+    
+    #implication, if an opponent is weak to one type it is not weak to the others 
+    #E.add_constraint(x[damageType]>>~x[otherDamagetypes])
+    E.add_constraint(x["Physical"]>>~x["Bullet"] &~x["Fire"] &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Bullet"]>>~x["Physical"] &~x["Fire"] &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Fire"]>>~x["Physical"] &~x["Bullet"] &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Ice"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Electric"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Ice"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Wind"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Ice"]  &~x["Electric"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Nuclear"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Bless"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"] &~x["Curse"] &~x["Psychokinesis"])
+    E.add_constraint(x["Curse"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"] &~x["Bless"] &~x["Psychokinesis"])
+    E.add_constraint(x["Psychokinesis"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"] &~x["Bless"] &~x["Curse"])
+    
+
+    #or, an opponent must have one weakness 
+    E.add_constraint(x["Physical"] | x["Bullet"] | x["Fire"] | x["Ice"] | x["Electric"] | x["Wind"] | x["Nuclear"] | x["Bless"] | x["Curse"] | x["Psychokinesis"])
+    
+    #implication an imponent can only have one resistance 
+    #E.add_constraint(y[]>>~y[])
+    E.add_constraint(y["Physical"]>>~y["Bullet"] &~y["Fire"] &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Bullet"]>>~y["Physical"] &~y["Fire"] &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Fire"]>>~y["Physical"] &~y["Bullet"] &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Ice"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Electric"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Wind"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Wind"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Nuclear"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Bless"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"] &~y["Curse"] &~y["Psychokinesis"])
+    E.add_constraint(y["Curse"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"] &~y["Bless"] &~y["Psychokinesis"])
+    E.add_constraint(y["Psychokinesis"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"] &~y["Bless"] &~y["Curse"])
+
+    #implication, or, an imponent cannot be weak to an element and be resistance
+    E.add_constraint(~(x["Physical"] | y["Physical"])
+    E.add_constraint(~(x["Bullet"] | y["Bullet"])
+    E.add_constraint(~(x["Fire"] | y["Fire"])
+    E.add_constraint(~(x["Ice"] | y["Ice"])
+    E.add_constraint(~(x["Electric"] | y["Electric"])
+    E.add_constraint(~(x["Wind"] | y["Wind"])
+    E.add_constraint(~(x["Nuclear"] | y["Nuclear"])
+    E.add_constraint(~(x["Bless"] | y["Bless"])
+    E.add_constraint(~(x["Curse"] | y["Curse"])
+    E.add_constraint(~(x["Psychokinesis"] | y["Psychokinesis"])
+                     
 
     return E
 
