@@ -21,7 +21,7 @@ def getInput(elements,inputType):
         return getInputFake(elements)
     return getInputReal(elements)
 
-def game():
+def game(typeInput):
     types = ["Physical", "Bullet", "Fire", "Ice", "Electric", "Wind", "Nuclear", "Blessed", "Curse", "Psychokinesis"]
     #just a list of the types in order
     
@@ -63,11 +63,11 @@ def game():
         for i in range(len(teammates)): #on each teammate's turn
             for j in range(numE): #print available enemies
                 print("{}) Enemy {}".format(j,j+1))
-            enemyTargeted = getInput(enemyArray,0) #gets the one chosen
+            enemyTargeted = getInput(enemyArray,typeInput) #gets the one chosen
             
             for k in range(len(teammates[i])): #print available elements
                 print("{}) {}".format(teammates[i][k],types[teammates[i][k]]))
-            elementUsed = getInput(teammates[i],0) #gets the one chosen
+            elementUsed = getInput(teammates[i],typeInput) #gets the one chosen
 
             print("Targeted Enemy {} with {}".format(enemyTargeted+1,types[elementUsed]))
             #tell player which enemy they targeted with which element
@@ -91,4 +91,4 @@ def game():
 
 if __name__ == '__main__':
     #runs the main code if you are running this directly
-    game()
+    game(0)
