@@ -13,6 +13,38 @@ class Oppenents(E):
         self.resistance = resistance
       def __repr__(self)->str:
         return f"Oppenent({self.weakness}, {self.resistance})"
+#new opponents
+OppenentWeakness= {
+      "Physical" :[],
+      "Bullet":[],
+      "Fire" :[],
+      "Ice":[],
+      "Electric":[],
+      "Wind" :[],
+      "Nuclear":[],
+      "Blessed":[],
+      "Curse":[],
+      "Psychokinesis":[]
+}
+for weakness in OppenentWeakness: 
+      for i in range(9):
+            OppenentWeakness[weakness].append(Oppenents(weakness,i))
+            
+OppenentResistance= {
+      "Physical" :[],
+      "Bullet":[],
+      "Fire" :[],
+      "Ice":[],
+      "Electric":[],
+      "Wind" :[],
+      "Nuclear":[],
+      "Blessed":[],
+      "Curse":[],
+      "Psychokinesis":[]
+}
+for resistance in OppenentWeakness: 
+      for i in range(9):
+            OppenentResistance[resistance].append(Oppenents(resistance,i))            
     
 @proposition(E)
 class BasicPropositions:
