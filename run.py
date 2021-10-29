@@ -1,4 +1,4 @@
-
+#game code is in the Persona 5 System file 
 from bauhaus import Encoding, proposition, constraint
 from bauhaus.utils import count_solutions, likelihood
 
@@ -6,8 +6,33 @@ from bauhaus.utils import count_solutions, likelihood
 E = Encoding()
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
+@proposition(E) 
+class Oppenents(E):
+      def __init__(self,weakness, resistance):
+        self.weakness = weakness
+        self.resistance = resistance
+      def __repr__(self)->str:
+        return f"Oppenent({self.weakness}, {self.resistance})"
+    
 @proposition(E)
 class BasicPropositions:
+     def build2DArray(num_rows, num_cols, format_string='({i},{j})'):
+        """A helper function to build a 2D array of variables
+        Inputs:
+        num_rows: the number of rows in this array
+        num_cols: the number of columns in this array
+        format_string: a string defining the name of each variable, where
+        {i} and {j} will be replaced with the row and column number respectively
+        Outputs:
+        array: an array with the specified number of rows and columns"""
+
+        array = []
+        for i in range(num_rows):
+            row = []
+            for j in range(num_cols):
+                row.append(Var(format_string.format(i=i,j=j)))
+            array.append(row)
+        return array
 
     def __init__(self, data):
         self.data = data
@@ -32,15 +57,22 @@ class FancyPropositions:
         return f"A.{self.data}"
 
 # Call your variables whatever you want
-a = BasicPropositions("a")
-b = BasicPropositions("b")   
-c = BasicPropositions("c")
-d = BasicPropositions("d")
-e = BasicPropositions("e")
-# At least one of these will be true
-x = FancyPropositions("x")
-y = FancyPropositions("y")
-z = FancyPropositions("z")
+x = BasicPropositions("x")
+y = BasicPropositions("y")   
+o = BasicPropositions("o")
+
+P = BasicPropositions("Physical")
+B = BasicPropositions("Bullet")
+F = BasicPropositions("Fire")
+I = BasicPropositions("Ice")
+E = BasicPropositions("Electric")
+W = BasicPropositions("Wind")
+N = BasicPropositions("Nuclear")
+BB = BasicPropositions("Bless")
+C = BasicPropositions("Curse")
+PP = BasicPropositions("Psychokinesis")
+
+
 
 
 # Build an example full theory for your setting and return it.
