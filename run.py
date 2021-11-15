@@ -92,9 +92,9 @@ class FancyPropositions:
         return f"A.{self.data}"
 
 # Call your variables whatever you want
-x = BasicPropositions("x")
-y = BasicPropositions("y")   
-o = BasicPropositions("o")
+x = BasicPropositions("x") #weakness
+y = BasicPropositions("y") # resistances 
+o = BasicPropositions("o") #oppenents 
 
 P = BasicPropositions("Physical")
 B = BasicPropositions("Bullet")
@@ -147,16 +147,28 @@ def example_theroy():
     E.add_constraint(y["Psychokinesis"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"] &~y["Bless"] &~y["Curse"])
 
     #implication, or, an imponent cannot be weak to an element and be resistance
-    E.add_constraint(~(x["Physical"] | y["Physical"])
-    E.add_constraint(~(x["Bullet"] | y["Bullet"])
-    E.add_constraint(~(x["Fire"] | y["Fire"])
-    E.add_constraint(~(x["Ice"] | y["Ice"])
-    E.add_constraint(~(x["Electric"] | y["Electric"])
-    E.add_constraint(~(x["Wind"] | y["Wind"])
-    E.add_constraint(~(x["Nuclear"] | y["Nuclear"])
-    E.add_constraint(~(x["Bless"] | y["Bless"])
-    E.add_constraint(~(x["Curse"] | y["Curse"])
-    E.add_constraint(~(x["Psychokinesis"] | y["Psychokinesis"])
+    E.add_constraint(~(x["Physical"] | y["Physical"]))
+    E.add_constraint(~(x["Bullet"] | y["Bullet"]))
+    E.add_constraint(~(x["Fire"] | y["Fire"]))
+    E.add_constraint(~(x["Ice"] | y["Ice"]))
+    E.add_constraint(~(x["Electric"] | y["Electric"]))
+    E.add_constraint(~(x["Wind"] | y["Wind"]))
+    E.add_constraint(~(x["Nuclear"] | y["Nuclear"]))
+    E.add_constraint(~(x["Bless"] | y["Bless"]))
+    E.add_constraint(~(x["Curse"] | y["Curse"]))
+    E.add_constraint(~(x["Psychokinesis"] | y["Psychokinesis"]))
+    
+    #if an oppent is weak to an element is resists another corresponding element 
+    E.add_constraint((x["Physical"]>> y["Bullet"]))
+    E.add_constraint((x["Bullet"]>>y["Nuclear"] ))
+    E.add_constraint((x["Fire"]>>y["Wind"] ))
+    E.add_constraint((x["Ice"] >>y["Fire"]))
+    E.add_constraint((x["Electric"]>>y["Ice"] ))
+    E.add_constraint((x["Wind"]>>y["Electric"] ))
+    E.add_constraint((x["Nuclear"]>>y["Psychokinesis"] ))
+    E.add_constraint((x["Bless"]>>y["Curse"] ))
+    E.add_constraint((x["Curse"] >>y["Bless"]))
+    E.add_constraint((x["Psychokinesis"]>>y["Physical"]))
                      
 
     return E
