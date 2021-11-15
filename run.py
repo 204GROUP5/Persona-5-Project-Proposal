@@ -1,4 +1,7 @@
 #game code is in the Persona 5 System file 
+import timeit
+start = timeit.default_timer() #starts timer
+
 from bauhaus import Encoding, proposition, constraint
 from bauhaus.utils import count_solutions, likelihood
 
@@ -66,10 +69,10 @@ class BasicPropositions:
             array.append(row)
         return array
 
-    def __init__(self, data):
+     def __init__(self, data):
         self.data = data
 
-    def __repr__(self):
+     def __repr__(self):
         return f"A.{self.data}"
 
 
@@ -105,8 +108,6 @@ C = BasicPropositions("Curse")
 PP = BasicPropositions("Psychokinesis")
 
 
-
-
 # Build an example full theory for your setting and return it.
 #
 #  There should be at least 10 variables, and a sufficiently large formula to describe it (>50 operators).
@@ -114,7 +115,6 @@ PP = BasicPropositions("Psychokinesis")
 #  what the expectations are.
 
 def example_theroy():
-    
     
     #implication, if an opponent is weak to one type it is not weak to the others 
     #E.add_constraint(x[damageType]>>~x[otherDamagetypes])
@@ -179,3 +179,7 @@ if __name__ == "__main__":
         # Literals are compiled to NNF here
         print(" %s: %.2f" % (vn, likelihood(T, v)))
     print()
+
+#stops timer and prints length of time program took to run
+stop = timeit.default_timer()
+print("Time: ", stop - start)
