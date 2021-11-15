@@ -1,27 +1,36 @@
 import random
 
-def getInputReal(elements): #elements is an array of valid inputs
+def getInputReal(elements1,elements2): #elements is an array of valid inputs
     gotInput = False
-    value = -1
+    value1 = -1
     while not gotInput: #repeats until given valid input
-        value = int(input(""))
-        if value in elements:
+        value1 = int(input(""))
+        if value1 in elements1:
             gotInput = True #exits if given valid input
         else: #else tells the user that they made a mistake
             print("Dumbass stupid idiot")
 
-    return value
+    gotInput = False
+    value2 = -1
+    while not gotInput:
+        value2 = int(input(""))
+        if value2 in elements2:
+            gotInput = True
+        else:
+            print("Whoohps")
+
+    return value1,value2
 
 
-def getInputFake(elements):
+def getInputFake(elements1,elements2):
     return 0 #doesn't work yet
 
-def getInput(elements,inputType):
+def getInput(elements1,elements2,inputType):
     if inputType: #depending on elementType, uses human or computer inputs
-        return getInputFake(elements)
-    return getInputReal(elements)
+        return getInputFake(elements1,elements2)
+    return getInputReal(elements1,elements2)
 
-def game(typeInput):
+def game():
     types = ["Physical", "Bullet", "Fire", "Ice", "Electric", "Wind", "Nuclear", "Blessed", "Curse", "Psychokinesis"]
     #just a list of the types in order
     
@@ -63,11 +72,13 @@ def game(typeInput):
         for i in range(len(teammates)): #on each teammate's turn
             for j in range(numE): #print available enemies
                 print("{}) Enemy {}".format(j,j+1))
-            enemyTargeted = getInput(enemyArray,typeInput) #gets the one chosen
+            
+            print(" ")
             
             for k in range(len(teammates[i])): #print available elements
                 print("{}) {}".format(teammates[i][k],types[teammates[i][k]]))
-            elementUsed = getInput(teammates[i],typeInput) #gets the one chosen
+
+            (enemyTargeted, elementUsed) = getInput(enemyArray,teammates[i],0) #gets the one chosen
 
             print("Targeted Enemy {} with {}".format(enemyTargeted+1,types[elementUsed]))
             #tell player which enemy they targeted with which element
@@ -91,4 +102,4 @@ def game(typeInput):
 
 if __name__ == '__main__':
     #runs the main code if you are running this directly
-    game(0)
+    game()
