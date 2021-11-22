@@ -69,7 +69,11 @@ def game(E, state):
             print("Targeted Enemy {} with {}".format(enemyTargeted+1,types[elementUsed]))
             #tell player which enemy they targeted with which element
 
-            if enemyWeak[enemyTargeted] == elementUsed:
+            if enemyRes[enemyTargeted] == elementUsed:
+                print("The enemy resisted that attack.")
+                #tells the player if they hit an enemy with their resistance
+                
+            elif enemyWeak[enemyTargeted] == elementUsed:
                 enemyHit[enemyTargeted] = True
                 print("That was the enemy's weakness!")
                 #tells the player if they hit an enemy with their weakness
@@ -82,7 +86,7 @@ def game(E, state):
 
             else:
                 print("It had little effect.")
-                #tells the player if they did not hit an enemy with their weakness
+                #tells the player if they did not hit an enemy with their resistance or weakness
 
         roundCount += 1
 
