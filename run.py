@@ -1,3 +1,4 @@
+import random
 #game code is in the Persona 5 System file 
 import timeit
 start = timeit.default_timer() #starts timer
@@ -16,39 +17,32 @@ class Oppenents(E):
         self.resistance = resistance
       def __repr__(self)->str:
         return f"Oppenent({self.weakness}, {self.resistance})"
-#new opponents
-OppenentWeakness= {
-      "Physical" :[],
-      "Bullet":[],
-      "Fire" :[],
-      "Ice":[],
-      "Electric":[],
-      "Wind" :[],
-      "Nuclear":[],
-      "Blessed":[],
-      "Curse":[],
-      "Psychokinesis":[]
-}
-for weakness in OppenentWeakness: 
-      for i in range(9):
-            OppenentWeakness[weakness].append(Oppenents(weakness,i))
-            
-OppenentResistance= {
-      "Physical" :[],
-      "Bullet":[],
-      "Fire" :[],
-      "Ice":[],
-      "Electric":[],
-      "Wind" :[],
-      "Nuclear":[],
-      "Blessed":[],
-      "Curse":[],
-      "Psychokinesis":[]
-}
-for resistance in OppenentWeakness: 
-      for i in range(9):
-            OppenentResistance[resistance].append(Oppenents(resistance,i))            
-    
+
+#set up opponent weaknesses and resistances
+opponents_arr = []
+num_opponents= (random.randint(1,6))
+for i in range(num_opponents):
+    opponents_arr.append([])
+    opponents_arr[i].append(random.randint(0,10)) #append weakness
+    #add resistance 
+
+#set up teammate power types
+teammates = [[], [], [], []]
+ceiling = 7
+for i in range(len(teammates)-1):
+    teammates[i].append(0)   #physical and gun
+    teammates[i].append(1)
+
+    new_elem = (random.randint(0, ceiling) + 2)
+    for j in range(i):   #get random elem not already taken by another teammate
+        if new_elem == teammates[j][2]:
+            new_elem += 1
+    teammates[i].append(new_elem)
+    ceiling -= 1
+for j in range(10):    #give fourth teammate all types
+    teammates[3].append[j]
+
+
 @proposition(E)
 class BasicPropositions:
      def build2DArray(num_rows, num_cols, format_string='({i},{j})'):
@@ -100,7 +94,7 @@ P = BasicPropositions("Physical")
 B = BasicPropositions("Bullet")
 F = BasicPropositions("Fire")
 I = BasicPropositions("Ice")
-E = BasicPropositions("Electric")
+EL = BasicPropositions("Electric")
 W = BasicPropositions("Wind")
 N = BasicPropositions("Nuclear")
 BB = BasicPropositions("Bless")
