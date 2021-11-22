@@ -1,4 +1,4 @@
-import random
+from bauhaus import Encoding, proposition, constraint
 
 def getInputReal(elements1,elements2): #elements is an array of valid inputs
     gotInput = False
@@ -30,38 +30,24 @@ def getInput(elements1,elements2,inputType):
         return getInputFake(elements1,elements2)
     return getInputReal(elements1,elements2)
 
-def game():
+def game(E, state):
     types = ["Physical", "Bullet", "Fire", "Ice", "Electric", "Wind", "Nuclear", "Blessed", "Curse", "Psychokinesis"]
     #just a list of the types in order
-    
-    numE = random.randint(1,5) #picks a random number of enemies
+
+    teammates = state[1]
+
+    enemies = state[0]
+    numE = len(enemies)
+
     enemyArray = []
     enemyWeak = []
+    enemyRes = []
     enemyHit = []
-    
-    for i in range(numE): #for each enemy
-        enemyArray.append(i) #puts their number into an array
-        enemyWeak.append(random.randint(1,10)) #randomly gives them a weakness
-        enemyHit.append(False) #adds that they haven't been hit
-
-    #teammate values
-    teammates = [[],[],[],[]] #2d array of teammates + their available elements
-    ceiling = 7
-    
-    for i in range(len(teammates)-1): #determines first 3 party members types
-        teammates[i].append(0) #physical and gun
-        teammates[i].append(1)
-        
-        newElement = (random.randint(0,ceiling) + 2)
-        for j in range(i): #get a random element not already taken by another teammate
-            if newElement == teammates[j][2]:
-                newElement += 1
-        
-        teammates[i].append(newElement)
-        ceiling -= 1
-
-    for j in range(10): #give fourth teammate all elemental types
-        teammates[3].append(j)
+    for i in range(numE):
+        enemyArray.append(i)
+        enemyWeak.append(enemies[i][0])
+        enemyRes.append(enemies[i][1])
+        enemyHit.append(False)
 
     roundCount = 1
     allHit = False
@@ -102,4 +88,4 @@ def game():
 
 if __name__ == '__main__':
     #runs the main code if you are running this directly
-    game()
+    game("",[1])
