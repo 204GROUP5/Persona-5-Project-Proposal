@@ -2,7 +2,7 @@
 
 Welcome to the major project for CISC/CMPE 204 (Fall 2021)!
 
-Change this README.md file to summarize your project (few sentences at most), and provide pointers to the general structure of the repository. How you organize and build things (which files, how you structure things, etc) is entirely up to you! The only things you must keep in place are what is already listed in the **Structure** section below.
+This project models the game of Persona 5. It will take a number of opponents between 1 to 5, and assign all a power weakness and a resistance. The model will then "battle" the opponents with 4 teammates, each with their own power type. It will try and solve the program, or, win the battle as quickly as possible.
 
 ## Structure
 
