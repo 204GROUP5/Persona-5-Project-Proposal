@@ -2,7 +2,7 @@
 
 Welcome to the major project for CISC/CMPE 204 (Fall 2021)!
 
-This project models the game of Persona 5. It will take a number of opponents between 1 to 5, and assign all a power weakness and a resistance. The model will then "battle" the opponents with 4 teammates, each with their own power type. It will try and solve the program, or, win the battle as quickly as possible.
+This project models the game of Persona 5. It will take a number of opponents between 1 to 5, and assign all a power weakness and a resistance. The model will then "battle" the opponents with 4 teammates, each with their own power type. It will try and solve the program/win the battle as quickly as possible.
 
 ## Structure
 
