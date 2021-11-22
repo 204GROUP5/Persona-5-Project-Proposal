@@ -19,12 +19,15 @@ class Oppenents(E):
         return f"Oppenent({self.weakness}, {self.resistance})"
 
 #set up opponent weaknesses and resistances
+weak_to_res = [1, 6, 5, 2, 3, 4, 9, 8, 7, 0] #all different power types
+
 opponents_arr = []
 num_opponents= (random.randint(1,6))
 for i in range(num_opponents):
     opponents_arr.append([])
     opponents_arr[i].append(random.randint(0,10)) #append weakness
-    #add resistance 
+    opponents_arr[i].append(weak_to_res[opponents_arr[i]]) #add resisitance to opponent based on weakness
+
 
 #set up teammate power types
 teammates = [[], [], [], []]
