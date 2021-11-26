@@ -144,7 +144,7 @@ def example_theory():
         #implication, if an opponent is weak to one type it is not weak to the others 
         #E.add_constraint(x[damageType]>>~x[otherDamagetypes])
         E.add_constraint(all_weak[i][0]>>~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(x["Bullet"]>>~x["Physical"] &~x["Fire"] &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
+        E.add_constraint(all_weak[i][1]>>~all_weak[i][0] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
         E.add_constraint(x["Fire"]>>~x["Physical"] &~x["Bullet"] &~x["Ice"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
         E.add_constraint(x["Ice"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Electric"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
         E.add_constraint(x["Electric"]>>~x["Physical"] &~x["Bullet"] &~x["Fire"]  &~x["Ice"]  &~x["Wind"]  &~x["Nuclear"]  &~x["Bless"] &~x["Curse"] &~x["Psychokinesis"])
@@ -156,7 +156,7 @@ def example_theory():
     
 
         #or, an opponent must have one weakness 
-        E.add_constraint(x["Physical"] | x["Bullet"] | x["Fire"] | x["Ice"] | x["Electric"] | x["Wind"] | x["Nuclear"] | x["Bless"] | x["Curse"] | x["Psychokinesis"])
+        E.add_constraint(all_weak[i][0] | all_weak[i][1] |all_weak[i][2] | all_weak[i][3] | all_weak[i][4] | all_weak[i][5] | all_weak[i][6] | all_weak[i][7] | all_weak[i][8] | all_weak[i][9])
     
         #implication an imponent can only have one resistance 
         #E.add_constraint(y[]>>~y[])
