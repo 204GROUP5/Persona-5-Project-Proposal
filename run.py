@@ -46,7 +46,7 @@ for opp in range(num_opponents):
     weaknesses = []
     resistances = []
     for elem in range(10):
-        weaknesses.append(opp, elem)
+        weaknesses.append(Weakness(opp, elem))
         resistances.append(Resistance(opp, elem))
 
     all_weaks.append(weaknesses)
