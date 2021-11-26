@@ -130,7 +130,7 @@ def example_theory():
     #or, an opponent must have one weakness 
     E.add_constraint(x["Physical"] | x["Bullet"] | x["Fire"] | x["Ice"] | x["Electric"] | x["Wind"] | x["Nuclear"] | x["Bless"] | x["Curse"] | x["Psychokinesis"])
     
-    #implication an imponent can only have one resistance 
+    #implication an opponent can only have one resistance 
     #E.add_constraint(y[]>>~y[])
     E.add_constraint(y["Physical"]>>~y["Bullet"] &~y["Fire"] &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
     E.add_constraint(y["Bullet"]>>~y["Physical"] &~y["Fire"] &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"]  &~y["Bless"] &~y["Curse"] &~y["Psychokinesis"])
@@ -143,19 +143,19 @@ def example_theory():
     E.add_constraint(y["Curse"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"] &~y["Bless"] &~y["Psychokinesis"])
     E.add_constraint(y["Psychokinesis"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"] &~y["Bless"] &~y["Curse"])
 
-    #implication, or, an imponent cannot be weak to an element and be resistance
-    E.add_constraint(~(x["Physical"] | y["Physical"]))
-    E.add_constraint(~(x["Bullet"] | y["Bullet"]))
-    E.add_constraint(~(x["Fire"] | y["Fire"]))
-    E.add_constraint(~(x["Ice"] | y["Ice"]))
-    E.add_constraint(~(x["Electric"] | y["Electric"]))
-    E.add_constraint(~(x["Wind"] | y["Wind"]))
-    E.add_constraint(~(x["Nuclear"] | y["Nuclear"]))
-    E.add_constraint(~(x["Bless"] | y["Bless"]))
-    E.add_constraint(~(x["Curse"] | y["Curse"]))
-    E.add_constraint(~(x["Psychokinesis"] | y["Psychokinesis"]))
+    #and, an opponent cannot be weak to an element and be resistance
+    E.add_constraint(~(x["Physical"] & y["Physical"]))
+    E.add_constraint(~(x["Bullet"] & y["Bullet"]))
+    E.add_constraint(~(x["Fire"] & y["Fire"]))
+    E.add_constraint(~(x["Ice"] & y["Ice"]))
+    E.add_constraint(~(x["Electric"] & y["Electric"]))
+    E.add_constraint(~(x["Wind"] & y["Wind"]))
+    E.add_constraint(~(x["Nuclear"] & y["Nuclear"]))
+    E.add_constraint(~(x["Bless"] & y["Bless"]))
+    E.add_constraint(~(x["Curse"] & y["Curse"]))
+    E.add_constraint(~(x["Psychokinesis"] & y["Psychokinesis"]))
     
-    #if an oppent is weak to an element is resists another corresponding element 
+    #if an oppnent is weak to an element is resists another corresponding element 
     E.add_constraint((x["Physical"]>> y["Bullet"]))
     E.add_constraint((x["Bullet"]>>y["Nuclear"] ))
     E.add_constraint((x["Fire"]>>y["Wind"] ))
