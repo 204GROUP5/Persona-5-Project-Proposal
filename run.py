@@ -10,13 +10,13 @@ from bauhaus.utils import count_solutions, likelihood
 E = Encoding()
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
-@proposition(E) 
-class Oppenents(E):
-      def __init__(self,weakness, resistance):
-        self.weakness = weakness
-        self.resistance = resistance
-      def __repr__(self)->str:
-        return f"Oppenent({self.weakness}, {self.resistance})"
+#@proposition(E) 
+#class Oppenents(E):
+#      def __init__(self,weakness, resistance):
+#        self.weakness = weakness
+#        self.resistance = resistance
+#      def __repr__(self)->str:
+#        return f"Oppenent({self.weakness}, {self.resistance})"
 
 #set up opponent weaknesses and resistances
 weak_to_res = [1, 6, 5, 2, 3, 4, 9, 8, 7, 0] #all different power types
@@ -25,8 +25,8 @@ opponents_arr = []
 num_opponents= (random.randint(1,6))
 for i in range(num_opponents):
     opponents_arr.append([])
-    opponents_arr[i].append(random.randint(0,10)) #append weakness
-    opponents_arr[i].append(weak_to_res[opponents_arr[i]]) #add resisitance to opponent based on weakness
+    opponents_arr[i].append(random.randint(0,9)) #append weakness
+    opponents_arr[i].append(weak_to_res[opponents_arr[i][0]]) #add resisitance to opponent based on weakness
 
 
 #set up teammate power types
@@ -43,7 +43,7 @@ for i in range(len(teammates)-1):
     teammates[i].append(new_elem)
     ceiling -= 1
 for j in range(10):    #give fourth teammate all types
-    teammates[3].append[j]
+    teammates[3].append(j)
 
 
 @proposition(E)
@@ -111,7 +111,7 @@ PP = BasicPropositions("Psychokinesis")
 #  This restriction is fairly minimal, and if there is any concern, reach out to the teaching staff to clarify
 #  what the expectations are.
 
-def example_theroy():
+def example_theory():
     
     #implication, if an opponent is weak to one type it is not weak to the others 
     #E.add_constraint(x[damageType]>>~x[otherDamagetypes])
