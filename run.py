@@ -49,11 +49,11 @@ for opp in range(num_opponents):
         weaknesses.append(Weakness(opp, elem))
         resistances.append(Resistance(opp, elem))
 
-    all_weaks.append(weaknesses)
+    all_weak.append(weaknesses)
     all_res.append(resistances)
     
     opponents_arr.append([])
-    opponents_arr[i].append(Opponent(random.randint(0,9))) #append weakness
+    opponents_arr[opp].append(Opponent(opp, random.randint(0,9))) #append weakness
 
 
 #set up teammate power types
@@ -172,16 +172,16 @@ def example_theory():
         E.add_constraint(y["Psychokinesis"]>>~y["Physical"] &~y["Bullet"] &~y["Fire"]  &~y["Ice"]  &~y["Electric"]  &~y["Wind"]  &~y["Nuclear"] &~y["Bless"] &~y["Curse"])
 
         #implication, or, an imponent cannot be weak to an element and be resistance
-        E.add_constraint(~(x["Physical"] | y["Physical"]))
-        E.add_constraint(~(x["Bullet"] | y["Bullet"]))
-        E.add_constraint(~(x["Fire"] | y["Fire"]))
-        E.add_constraint(~(x["Ice"] | y["Ice"]))
-        E.add_constraint(~(x["Electric"] | y["Electric"]))
-        E.add_constraint(~(x["Wind"] | y["Wind"]))
-        E.add_constraint(~(x["Nuclear"] | y["Nuclear"]))
-        E.add_constraint(~(x["Bless"] | y["Bless"]))
-        E.add_constraint(~(x["Curse"] | y["Curse"]))
-        E.add_constraint(~(x["Psychokinesis"] | y["Psychokinesis"]))
+        E.add_constraint(~(x["Physical"] & y["Physical"]))
+        E.add_constraint(~(x["Bullet"] & y["Bullet"]))
+        E.add_constraint(~(x["Fire"] & y["Fire"]))
+        E.add_constraint(~(x["Ice"] & y["Ice"]))
+        E.add_constraint(~(x["Electric"] & y["Electric"]))
+        E.add_constraint(~(x["Wind"] & y["Wind"]))
+        E.add_constraint(~(x["Nuclear"] & y["Nuclear"]))
+        E.add_constraint(~(x["Bless"] & y["Bless"]))
+        E.add_constraint(~(x["Curse"] & y["Curse"]))
+        E.add_constraint(~(x["Psychokinesis"] & y["Psychokinesis"]))
     
         #if an oppent is weak to an element is resists another corresponding element 
         E.add_constraint((x["Physical"]>> y["Bullet"]))
