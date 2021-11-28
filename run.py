@@ -105,15 +105,15 @@ class BasicPropositions:
 # that are instances of this class must be true by using a @constraint decorator.
 # other options include: at most one, exactly one, at most k, and implies all.
 # For a complete module reference, see https://bauhaus.readthedocs.io/en/latest/bauhaus.html
-@constraint.at_least_one(E)
-@proposition(E)
-class FancyPropositions:
-
-    def __init__(self, data):
-        self.data = data
-
-    def __repr__(self):
-        return f"A.{self.data}"
+#@constraint.at_least_one(E)
+#@proposition(E)
+#class FancyPropositions:
+#
+#    def __init__(self, data):
+#        self.data = data
+#
+#    def __repr__(self):
+#        return f"A.{self.data}"
 
 # Call your variables whatever you want
 x = BasicPropositions("x") #weakness
@@ -143,16 +143,16 @@ def example_theory():
     for i in range(len(opponents_arr)):
         #implication, if an opponent is weak to one type it is not weak to the others 
         #E.add_constraint(x[damageType]>>~x[otherDamagetypes])
-        E.add_constraint(all_weak[i][0]>>~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][1]>>~all_weak[i][0] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][2]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][3]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][4]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][5]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][6]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][7]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][8] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][8]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][9])
-        E.add_constraint(all_weak[i][9]>>~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8])
+        E.add_constraint(all_weak[i][0]>>(~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][1]>>(~all_weak[i][0] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][2]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][3]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][4]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][5]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][6]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][7]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][8] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][8]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][9]))
+        E.add_constraint(all_weak[i][9]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8]))
         
     
 
@@ -186,16 +186,16 @@ def example_theory():
 
     
         #if an oppent is weak to an element is resists another corresponding element 
-        E.add_constraint((all_weak[i][0]>>all_res[i][2]))
-        E.add_constraint((all_weak[i][1]>>all_res[i][6]))
-        E.add_constraint((all_weak[i][2]>>all_res[i][5]))
-        E.add_constraint((all_weak[i][3]>>all_res[i][2]))
-        E.add_constraint((all_weak[i][4]>>all_res[i][3]))
-        E.add_constraint((all_weak[i][5]>>all_res[i][4]))
-        E.add_constraint((all_weak[i][6]>>all_res[i][9]))
-        E.add_constraint((all_weak[i][7]>>all_res[i][8]))
-        E.add_constraint((all_weak[i][8]>>all_res[i][7]))
-        E.add_constraint((all_weak[i][9]>>all_res[i][0]))
+        E.add_constraint(all_weak[i][0]>>all_res[i][2])
+        E.add_constraint(all_weak[i][1]>>all_res[i][6])
+        E.add_constraint(all_weak[i][2]>>all_res[i][5])
+        E.add_constraint(all_weak[i][3]>>all_res[i][2])
+        E.add_constraint(all_weak[i][4]>>all_res[i][3])
+        E.add_constraint(all_weak[i][5]>>all_res[i][4])
+        E.add_constraint(all_weak[i][6]>>all_res[i][9])
+        E.add_constraint(all_weak[i][7]>>all_res[i][8])
+        E.add_constraint(all_weak[i][8]>>all_res[i][7])
+        E.add_constraint(all_weak[i][9]>>all_res[i][0])
 
                      
 
@@ -213,12 +213,12 @@ if __name__ == "__main__":
     print("# Solutions: %d" % count_solutions(T))
     print("   Solution: %s" % T.solve())
 
-    print("\nVariable likelihoods:")
-    for v,vn in zip([a,b,c,x,y,z], 'abcxyz'):
+    #print("\nVariable likelihoods:")
+    #for v,vn in zip([a,b,c,x,y,z], 'abcxyz'):
         # Ensure that you only send these functions NNF formulas
         # Literals are compiled to NNF here
-        print(" %s: %.2f" % (vn, likelihood(T, v)))
-    print()
+    #    print(" %s: %.2f" % (vn, likelihood(T, v)))
+    #print()
 
 #stops timer and prints length of time program took to run
 stop = timeit.default_timer()
