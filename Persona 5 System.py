@@ -22,32 +22,24 @@ def getInputReal(elements1,elements2): #elements is an array of valid inputs
     return value1,value2
 
 
-def getInputFake(elements1,elements2):
+def getInputFake(elements1,elements2, E):
     return 0 #doesn't work yet
 
-def getInput(elements1,elements2,inputType):
+def getInput(elements1,elements2,inputType, E):
     if inputType: #depending on elementType, uses human or computer inputs
-        return getInputFake(elements1,elements2)
+        return getInputFake(elements1,elements2, E)
     return getInputReal(elements1,elements2)
 
-def game(E, state):
+def game(E, teammates, enemies, weaknesses, resistances):
     types = ["Physical", "Bullet", "Fire", "Ice", "Electric", "Wind", "Nuclear", "Blessed", "Curse", "Psychokinesis"]
     #just a list of the types in order
 
-    teammates = state[1]
-
-    enemies = state[0]
     numE = len(enemies)
-
-    enemyArray = []
-    enemyWeak = []
-    enemyRes = []
     enemyHit = []
+    enemyId = []
     for i in range(numE):
-        enemyArray.append(i)
-        enemyWeak.append(enemies[i][0])
-        enemyRes.append(enemies[i][1])
-        enemyHit.append(False)
+        enemyHit.append([False])
+        enemyId.append(i)
 
     roundCount = 1
     allHit = False
@@ -64,19 +56,23 @@ def game(E, state):
             for k in range(len(teammates[i])): #print available elements
                 print("{}) {}".format(teammates[i][k],types[teammates[i][k]]))
 
-            (enemyTargeted, elementUsed) = getInput(enemyArray,teammates[i],0) #gets the one chosen
+            (enemyTargeted, elementUsed) = getInput(enemyId,teammates[i],0) #gets the one chosen
 
             print("Targeted Enemy {} with {}".format(enemyTargeted+1,types[elementUsed]))
             #tell player which enemy they targeted with which element
 
-            if enemyRes[enemyTargeted] == elementUsed:
+            if enemies[enemyTargeted].res == elementUsed:
                 print("The enemy resisted that attack.")
                 #tells the player if they hit an enemy with their resistance
+                E.add_constraint(resistances[enemyTargeted][elementUsed])
+                #updates the constraints
                 
-            elif enemyWeak[enemyTargeted] == elementUsed:
+            elif enemies[enemyTargeted].weak == elementUsed:
                 enemyHit[enemyTargeted] = True
                 print("That was the enemy's weakness!")
                 #tells the player if they hit an enemy with their weakness
+                E.add_constraint(weaknesses[enemyTargeted][elementUsed])
+                #updates the constraints
 
                 allHit = True #after a weakness is hit,
                     #exit if all enemies have been hit by a weakness
@@ -87,9 +83,13 @@ def game(E, state):
             else:
                 print("It had little effect.")
                 #tells the player if they did not hit an enemy with their resistance or weakness
+                E.add_constraint(~weaknesses[enemyTargeted][elementUsed])
+                E.add_constraint(~resistances[enemyTargeted][elementUsed])
 
         roundCount += 1
 
+        return E
+
 if __name__ == '__main__':
     #runs the main code if you are running this directly
-    game("",[1])
+    game()
