@@ -8,7 +8,9 @@ def getInputReal(elements1,elements2): #elements is an array of valid inputs
         if value1 in elements1:
             gotInput = True #exits if given valid input
         else: #else tells the user that they made a mistake
-            print("Dumbass stupid idiot")
+            print("Dumbass stupid idiot") #you should not see this code
+            #it isn't used anymore
+            #we're sorry for the profanity
 
     gotInput = False
     value2 = -1
