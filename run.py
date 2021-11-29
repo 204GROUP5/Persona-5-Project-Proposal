@@ -220,6 +220,20 @@ if __name__ == "__main__":
     #    print(" %s: %.2f" % (vn, likelihood(T, v)))
     #print()
 
+    types_list = ["Physical",
+                  "Bullet",
+                  "Fire",
+                  "Ice",
+                  "Electric",
+                  "Wind",
+                  "Nuclear",
+                  "Bless",
+                  "Curse",
+                  "Psychokinesis"]
+
+    for i in range(num_opponents):
+        print("Enemy {} was resistant to {} and weak to {}".format(i+1, types_list[opponents_arr[i].res], types_list[opponents_arr[i].weak]))
+    
 #stops timer and prints length of time program took to run
 stop = timeit.default_timer()
 print("Time: ", stop - start)
