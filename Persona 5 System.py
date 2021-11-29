@@ -22,12 +22,24 @@ def getInputReal(elements1,elements2): #elements is an array of valid inputs
     return value1,value2
 
 
-def getInputFake(elements1,elements2, E):
-    return 0 #doesn't work yet
+def getInputFake(elements1,elements2, weak, E):
+    indexes = (0,0)
+    tempE = E
+    tempSolutions = -1
+    numSolutions = -1
+    for i in range(elements1):
+        for j in range(elements2):
+            tempE = E
+            tempE.add_constraint(weak[i][j])
+            tempSolutions = count_solutions(tempE)
+            if tempSolutions >= numSolutions:
+                numSolutions = tempSolutions
+                indexes = (i,j)
+    return indexes
 
-def getInput(elements1,elements2,inputType, E):
+def getInput(elements1,elements2,inputType, weak, E):
     if inputType: #depending on elementType, uses human or computer inputs
-        return getInputFake(elements1,elements2, E)
+        return getInputFake(elements1,elements2, weak, E)
     return getInputReal(elements1,elements2)
 
 def game(E, teammates, enemies, weaknesses, resistances):
@@ -56,7 +68,7 @@ def game(E, teammates, enemies, weaknesses, resistances):
             for k in range(len(teammates[i])): #print available elements
                 print("{}) {}".format(teammates[i][k],types[teammates[i][k]]))
 
-            (enemyTargeted, elementUsed) = getInput(enemyId,teammates[i],0) #gets the one chosen
+            (enemyTargeted, elementUsed) = getInput(enemyId,teammates[i],weaknesses,E) #gets the one chosen
 
             print("Targeted Enemy {} with {}".format(enemyTargeted+1,types[elementUsed]))
             #tell player which enemy they targeted with which element
