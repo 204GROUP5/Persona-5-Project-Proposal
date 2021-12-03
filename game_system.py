@@ -104,7 +104,3 @@ def game(E, teammates, enemies, weaknesses, resistances):
         roundCount += 1
 
         return E
-
-if __name__ == '__main__':
-    #runs the main code if you are running this directly
-    game()
