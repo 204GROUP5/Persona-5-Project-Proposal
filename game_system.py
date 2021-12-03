@@ -74,4 +74,4 @@ def game(E, teammates, enemies, weaknesses, resistances):
 
         roundCount += 1
 
-        return E
+    return E
