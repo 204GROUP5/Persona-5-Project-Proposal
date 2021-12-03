@@ -1,20 +1,11 @@
 from bauhaus import Encoding, proposition, constraint
 from bauhaus.utils import count_solutions, likelihood
 
-def getInput(elements1,elements2, weak, E):
-    indexes = (0,0)
-    tempE = E
-    tempSolutions = -1
-    numSolutions = -1
-    for i in elements1:
-        for j in elements2:
-            tempE = E
-            tempE.add_constraint(weak[i][j])
-            tempSolutions = count_solutions(tempE)
-            if tempSolutions >= numSolutions:
-                numSolutions = tempSolutions
-                indexes = (i,j)
-    return indexes
+def getInput(num, elements1,elements2):
+    i = num % len(elements1)
+    j = (num//(len(elements1))) % len(elements2)
+        
+    return (elements1[i], elements2[j])
 
 def game(E, teammates, enemies, weaknesses, resistances):
     types = ["Physical", "Bullet", "Fire", "Ice", "Electric", "Wind", "Nuclear", "Blessed", "Curse", "Psychokinesis"]
@@ -42,7 +33,7 @@ def game(E, teammates, enemies, weaknesses, resistances):
             for k in range(len(teammates[i])): #print available elements
                 print("{}) {}".format(teammates[i][k],types[teammates[i][k]]))
 
-            (enemyTargeted, elementUsed) = getInput(enemyId,teammates[i],weaknesses,E) #gets the one chosen
+            (enemyTargeted, elementUsed) = getInput(roundCount-1, enemyId,teammates[i]) #gets the one chosen
 
             print("Targeted Enemy {} with {}".format(enemyTargeted+1,types[elementUsed]))
             #tell player which enemy they targeted with which element
@@ -65,6 +56,9 @@ def game(E, teammates, enemies, weaknesses, resistances):
                 for i in range(0,numE):
                     if enemyHit[i] == False:
                         allHit = False
+                        
+                if allHit == True:
+                    break
 
             else:
                 print("It had little effect.")
