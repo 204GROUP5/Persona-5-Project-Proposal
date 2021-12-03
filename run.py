@@ -214,7 +214,7 @@ if __name__ == "__main__":
 
     T = example_theory()
     # Don't compile until you're finished adding all your constraints!
-    game_system.game(T, teammates, all_weak, all_res)
+    game_system.game(T, teammates, opponents_arr, all_weak, all_res)
     T = T.compile()
     # After compilation (and only after), you can check some of the properties
     # of your model:
