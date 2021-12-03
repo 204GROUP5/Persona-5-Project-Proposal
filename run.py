@@ -26,13 +26,21 @@ class Weakness:
     def __init__(self, opponent, element):
         self.opp = opponent
         self.elem = element
+        
+    def __repr__(self):
+        return 'Weakness(' + self.opp + ',' + self.elem + ')'
 
+    
 @proposition(E)
 class Resistance:
     def __init__(self, opponent, element):
         self.opp = opponent
         self.elem = element
+        
+    def __repr__(self):
+        return 'Resistance(' + self.opp + ',' + self.elem + ')'
 
+    
 class Opponent:
     def __init__(self, opponent, weakness):
         self.weak = weakness
