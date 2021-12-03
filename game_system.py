@@ -6,8 +6,8 @@ def getInput(elements1,elements2, weak, E):
     tempE = E
     tempSolutions = -1
     numSolutions = -1
-    for i in range(len(elements1)):
-        for j in range(len(elements2)):
+    for i in elements1:
+        for j in elements2:
             tempE = E
             tempE.add_constraint(weak[i][j])
             tempSolutions = count_solutions(tempE)
