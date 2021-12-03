@@ -63,8 +63,8 @@ def game(E, teammates, enemies, weaknesses, resistances):
             else:
                 print("It had little effect.")
                 #tells the player if they did not hit an enemy with their resistance or weakness
-                E.add_constraint(~weaknesses[enemyTargeted][elementUsed])
-                E.add_constraint(~resistances[enemyTargeted][elementUsed])
+                #E.add_constraint(~weaknesses[enemyTargeted][elementUsed])
+                #E.add_constraint(~resistances[enemyTargeted][elementUsed])
 
         roundCount += 1
 
