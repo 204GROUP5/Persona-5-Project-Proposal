@@ -9,15 +9,6 @@ from bauhaus.utils import count_solutions, likelihood
 # Encoding that will store all of your constraints
 E = Encoding()
 
-# To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
-#@proposition(E) 
-#class Oppenents(E):
-#      def __init__(self,weakness, resistance):
-#        self.weakness = weakness
-#        self.resistance = resistance
-#      def __repr__(self)->str:
-#        return f"Oppenent({self.weakness}, {self.resistance})"
-
 #set up opponent weaknesses and resistances
 weak_to_res = [1, 6, 5, 2, 3, 4, 9, 8, 7, 0] #all different power types
 
@@ -79,66 +70,6 @@ for i in range(len(teammates)-1):
     ceiling -= 1
 for j in range(10):    #give fourth teammate all types
     teammates[3].append(j)
-
-
-@proposition(E)
-class BasicPropositions:
-     def build2DArray(num_rows, num_cols, format_string='({i},{j})'):
-        """A helper function to build a 2D array of variables
-        Inputs:
-        num_rows: the number of rows in this array
-        num_cols: the number of columns in this array
-        format_string: a string defining the name of each variable, where
-        {i} and {j} will be replaced with the row and column number respectively
-        Outputs:
-        array: an array with the specified number of rows and columns"""
-
-        array = []
-        for i in range(num_rows):
-            row = []
-            for j in range(num_cols):
-                row.append(Var(format_string.format(i=i,j=j)))
-            array.append(row)
-        return array
-
-     def __init__(self, data):
-        self.data = data
-
-     def __repr__(self):
-        return f"A.{self.data}"
-
-
-# Different classes for propositions are useful because this allows for more dynamic constraint creation
-# for propositions within that class. For example, you can enforce that "at least one" of the propositions
-# that are instances of this class must be true by using a @constraint decorator.
-# other options include: at most one, exactly one, at most k, and implies all.
-# For a complete module reference, see https://bauhaus.readthedocs.io/en/latest/bauhaus.html
-#@constraint.at_least_one(E)
-#@proposition(E)
-#class FancyPropositions:
-#
-#    def __init__(self, data):
-#        self.data = data
-#
-#    def __repr__(self):
-#        return f"A.{self.data}"
-
-# Call your variables whatever you want
-x = BasicPropositions("x") #weakness
-y = BasicPropositions("y") # resistances 
-o = BasicPropositions("o") #oppenents 
-
-P = BasicPropositions("Physical")
-B = BasicPropositions("Bullet")
-F = BasicPropositions("Fire")
-I = BasicPropositions("Ice")
-EL = BasicPropositions("Electric")
-W = BasicPropositions("Wind")
-N = BasicPropositions("Nuclear")
-BB = BasicPropositions("Bless")
-C = BasicPropositions("Curse")
-PP = BasicPropositions("Psychokinesis")
-
 
 # Build an example full theory for your setting and return it.
 #
