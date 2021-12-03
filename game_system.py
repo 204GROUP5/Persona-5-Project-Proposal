@@ -7,6 +7,22 @@ def getInput(num, elements1,elements2):
         
     return (elements1[i], elements2[j])
 
+#def getInput(elements1,elements2, weak, E):
+#    indexes = (0,0)
+#    tempE = E
+#    tempSolutions = -1
+#    numSolutions = -1
+#    for i in elements1:
+#        for j in elements2:
+#            tempE = E
+#            tempE.add_constraint(weak[i][j])
+#            tempE = tempE.compile()
+#            tempSolutions = count_solutions(tempE)
+#            if tempSolutions >= numSolutions:
+#                numSolutions = tempSolutions
+#                indexes = (i,j)
+#    return indexes
+
 def game(E, teammates, enemies, weaknesses, resistances):
     types = ["Physical", "Bullet", "Fire", "Ice", "Electric", "Wind", "Nuclear", "Blessed", "Curse", "Psychokinesis"]
     #just a list of the types in order
