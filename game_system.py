@@ -1,30 +1,6 @@
 from bauhaus import Encoding, proposition, constraint
 
-#def getInputReal(elements1,elements2): #elements is an array of valid inputs
-#    gotInput = False
-#    value1 = -1
-#    while not gotInput: #repeats until given valid input
-#        value1 = int(input(""))
-#        if value1 in elements1:
-#            gotInput = True #exits if given valid input
-#        else: #else tells the user that they made a mistake
-#            print("Dumbass stupid idiot")
-#
-#    gotInput = False
-#    value2 = -1
-#    while not gotInput:
-#        value2 = int(input(""))
-#        if value2 in elements2:
-#            gotInput = True
-#        else:
-#            print("Whoohps")
-#
-#    return value1,value2
-# from a version of the code where we tested it with user input
-# just to see that the underlying code didn't have any errors
-
-
-def getInputFake(elements1,elements2, weak, E):
+def getInput(elements1,elements2, weak, E):
     indexes = (0,0)
     tempE = E
     tempSolutions = -1
@@ -38,12 +14,6 @@ def getInputFake(elements1,elements2, weak, E):
                 numSolutions = tempSolutions
                 indexes = (i,j)
     return indexes
-
-def getInput(elements1,elements2,inputType, weak, E):
-    #if inputType: #depending on elementType, uses human or computer inputs
-    #now only uses computer input since it's the only one that could be reached anyways
-    return getInputFake(elements1,elements2, weak, E)
-    #return getInputReal(elements1,elements2)
 
 def game(E, teammates, enemies, weaknesses, resistances):
     types = ["Physical", "Bullet", "Fire", "Ice", "Electric", "Wind", "Nuclear", "Blessed", "Curse", "Psychokinesis"]
