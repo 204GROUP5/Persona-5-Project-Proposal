@@ -90,34 +90,34 @@ def example_theory():
     for i in range(len(opponents_arr)):
         #implication, if an opponent is weak to one type it is not weak to the others 
         #E.add_constraint(x[damageType]>>~x[otherDamagetypes])
-        E.add_constraint(all_weak[i][0]>>(~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][1]>>(~all_weak[i][0] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][2]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][3]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][4]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][5]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][6]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][7] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][7]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][8] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][8]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][9]))
-        E.add_constraint(all_weak[i][9]>>(~all_weak[i][0] &~all_weak[i][1] &~all_weak[i][2] &~all_weak[i][3] &~all_weak[i][4] &~all_weak[i][5] &~all_weak[i][6] &~all_weak[i][7] &~all_weak[i][8]))
+        E.add_constraint(all_weak[i][0]>>((~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][1]>>((~all_weak[i][0]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][2]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][3]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][4]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][5]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][6]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][7]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][7]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][8]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][8]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][9])))
+        E.add_constraint(all_weak[i][9]>>((~all_weak[i][0]) &(~all_weak[i][1]) &(~all_weak[i][2]) &(~all_weak[i][3]) &(~all_weak[i][4]) &(~all_weak[i][5]) &(~all_weak[i][6]) &(~all_weak[i][7]) &(~all_weak[i][8])))
         
     
 
         #or, an opponent must have one weakness 
-        E.add_constraint(all_weak[i][0] | all_weak[i][1] |all_weak[i][2] | all_weak[i][3] | all_weak[i][4] | all_weak[i][5] | all_weak[i][6] | all_weak[i][7] | all_weak[i][8] | all_weak[i][9])
+        E.add_constraint(all_weak[i][0] | all_weak[i][1] | all_weak[i][2] | all_weak[i][3] | all_weak[i][4] | all_weak[i][5] | all_weak[i][6] | all_weak[i][7] | all_weak[i][8] | all_weak[i][9])
     
         #implication an imponent can only have one resistance 
         #E.add_constraint(y[damageType]>>~y[otherDamagetypes])
-        E.add_constraint(all_res[i][0]>>~all_res[i][1] &~all_res[i][2] &~all_res[i][3] &~all_res[i][4] &~all_res[i][5] &~all_res[i][6] &~all_res[i][7] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][1]>>~all_res[i][0] &~all_res[i][2] &~all_res[i][3] &~all_res[i][4] &~all_res[i][5] &~all_res[i][6] &~all_res[i][7] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][2]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][3] &~all_res[i][4] &~all_res[i][5] &~all_res[i][6] &~all_res[i][7] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][3]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][2] &~all_res[i][4] &~all_res[i][5] &~all_res[i][6] &~all_res[i][7] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][4]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][2] &~all_res[i][3] &~all_res[i][5] &~all_res[i][6] &~all_res[i][7] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][5]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][2] &~all_res[i][3] &~all_res[i][4] &~all_res[i][6] &~all_res[i][7] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][6]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][2] &~all_res[i][3] &~all_res[i][4] &~all_res[i][5] &~all_res[i][7] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][7]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][2] &~all_res[i][3] &~all_res[i][4] &~all_res[i][5] &~all_res[i][6] &~all_res[i][8] &~all_res[i][9])
-        E.add_constraint(all_res[i][8]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][2] &~all_res[i][3] &~all_res[i][4] &~all_res[i][5] &~all_res[i][6] &~all_res[i][7] &~all_res[i][9])
-        E.add_constraint(all_res[i][9]>>~all_res[i][0] &~all_res[i][1] &~all_res[i][2] &~all_res[i][3] &~all_res[i][4] &~all_res[i][5] &~all_res[i][6] &~all_res[i][7] &~all_res[i][8])
+        E.add_constraint(all_res[i][0]>>((~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][1]>>((~all_res[i][0]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][2]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][3]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][4]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][5]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][6]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][7]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][8]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][8]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][9])))
+        E.add_constraint(all_res[i][9]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8])))
 
         #implication, or, an imponent cannot be weak to an element and be resistance
         E.add_constraint(~(all_weak[i][0] & all_res[i][0]))
@@ -152,8 +152,10 @@ def example_theory():
 if __name__ == "__main__":
 
     T = example_theory()
+    P = T
+    P = P.compile()
     # Don't compile until you're finished adding all your constraints!
-    #game_system.game(T, teammates, opponents_arr, all_weak, all_res)
+    game_system.game(T, teammates, opponents_arr, all_weak, all_res)
     T = T.compile()
     # After compilation (and only after), you can check some of the properties
     # of your model:
