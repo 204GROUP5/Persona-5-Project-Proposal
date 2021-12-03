@@ -1,5 +1,5 @@
 import random
-#game code is in the Persona 5 System file 
+import game_system #game code is in this file
 import timeit
 start = timeit.default_timer() #starts timer
 
@@ -214,6 +214,7 @@ if __name__ == "__main__":
 
     T = example_theory()
     # Don't compile until you're finished adding all your constraints!
+    game_system.game(T, teammates, all_weak, all_res)
     T = T.compile()
     # After compilation (and only after), you can check some of the properties
     # of your model:
