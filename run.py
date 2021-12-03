@@ -9,6 +9,15 @@ from bauhaus.utils import count_solutions, likelihood
 # Encoding that will store all of your constraints
 E = Encoding()
 
+# To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
+#@proposition(E) 
+#class Oppenents(E):
+#      def __init__(self,weakness, resistance):
+#        self.weakness = weakness
+#        self.resistance = resistance
+#      def __repr__(self)->str:
+#        return f"Oppenent({self.weakness}, {self.resistance})"
+
 #set up opponent weaknesses and resistances
 weak_to_res = [1, 6, 5, 2, 3, 4, 9, 8, 7, 0] #all different power types
 
@@ -19,7 +28,7 @@ class Weakness:
         self.elem = element
         
     def __repr__(self):
-        return 'Weakness(' + self.opp + ',' + self.elem + ')'
+        return 'Weakness(' + str(self.opp) + ',' + str(self.elem) + ')'
 
     
 @proposition(E)
@@ -29,7 +38,7 @@ class Resistance:
         self.elem = element
         
     def __repr__(self):
-        return 'Resistance(' + self.opp + ',' + self.elem + ')'
+        return 'Resistance(' + str(self.opp) + ',' + str(self.elem) + ')'
 
     
 class Opponent:
@@ -51,8 +60,7 @@ for opp in range(num_opponents):
     all_weak.append(weaknesses)
     all_res.append(resistances)
     
-    opponents_arr.append([])
-    opponents_arr[opp].append(Opponent(opp, random.randint(0,9))) #append weakness
+    opponents_arr.append(Opponent(opp, random.randint(0,9))) #append weakness
 
 
 #set up teammate power types
@@ -145,12 +153,12 @@ if __name__ == "__main__":
 
     T = example_theory()
     # Don't compile until you're finished adding all your constraints!
-    game_system.game(T, teammates, opponents_arr, all_weak, all_res)
+    #game_system.game(T, teammates, opponents_arr, all_weak, all_res)
     T = T.compile()
     # After compilation (and only after), you can check some of the properties
     # of your model:
     print("\nSatisfiable: %s" % T.satisfiable())
-    print("# Solutions: %d" % count_solutions(T))
+    #print("# Solutions: %d" % count_solutions(T))
     print("   Solution: %s" % T.solve())
 
     #print("\nVariable likelihoods:")
