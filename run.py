@@ -9,15 +9,6 @@ from bauhaus.utils import count_solutions, likelihood
 # Encoding that will store all of your constraints
 E = Encoding()
 
-# To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
-#@proposition(E) 
-#class Oppenents(E):
-#      def __init__(self,weakness, resistance):
-#        self.weakness = weakness
-#        self.resistance = resistance
-#      def __repr__(self)->str:
-#        return f"Oppenent({self.weakness}, {self.resistance})"
-
 #set up opponent weaknesses and resistances
 weak_to_res = [1, 6, 5, 2, 3, 4, 9, 8, 7, 0] #all different power types
 
