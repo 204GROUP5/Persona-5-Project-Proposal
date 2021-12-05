@@ -42,14 +42,14 @@ class Resistance:
 
     
 class Opponent:
-    def __init__(self, opponent, weakness):
+    def __init__(self, weakness):
         self.weak = weakness
         self.res = weak_to_res[weakness]
 
 opponents_arr = []
 all_weak = []
 all_res = []
-num_opponents= (random.randint(1,6))
+num_opponents= (random.randint(1,5))
 for opp in range(num_opponents):
     weaknesses = []
     resistances = []
@@ -60,7 +60,7 @@ for opp in range(num_opponents):
     all_weak.append(weaknesses)
     all_res.append(resistances)
     
-    opponents_arr.append(Opponent(opp, random.randint(0,9))) #append weakness
+    opponents_arr.append(Opponent(random.randint(0,9))) #append weakness
 
 
 #set up teammate power types
@@ -106,7 +106,7 @@ def example_theory():
         #or, an opponent must have one weakness 
         E.add_constraint(all_weak[i][0] | all_weak[i][1] | all_weak[i][2] | all_weak[i][3] | all_weak[i][4] | all_weak[i][5] | all_weak[i][6] | all_weak[i][7] | all_weak[i][8] | all_weak[i][9])
     
-        #implication an imponent can only have one resistance 
+        #implication an opponent can only have one resistance 
         #E.add_constraint(y[damageType]>>~y[otherDamagetypes])
         E.add_constraint(all_res[i][0]>>((~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
         E.add_constraint(all_res[i][1]>>((~all_res[i][0]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8]) &(~all_res[i][9])))
@@ -119,7 +119,7 @@ def example_theory():
         E.add_constraint(all_res[i][8]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][9])))
         E.add_constraint(all_res[i][9]>>((~all_res[i][0]) &(~all_res[i][1]) &(~all_res[i][2]) &(~all_res[i][3]) &(~all_res[i][4]) &(~all_res[i][5]) &(~all_res[i][6]) &(~all_res[i][7]) &(~all_res[i][8])))
 
-        #implication, or, an imponent cannot be weak to an element and be resistance
+        #implication, or, an opponent cannot be weak to an element and be resistance
         E.add_constraint(~(all_weak[i][0] & all_res[i][0]))
         E.add_constraint(~(all_weak[i][1] & all_res[i][1]))
         E.add_constraint(~(all_weak[i][2] & all_res[i][2]))
@@ -132,7 +132,7 @@ def example_theory():
         E.add_constraint(~(all_weak[i][9] & all_res[i][9]))
 
     
-        #if an oppent is weak to an element is resists another corresponding element 
+        #if an opponent is weak to an element is resists another corresponding element 
         E.add_constraint(all_weak[i][0]>>all_res[i][2])
         E.add_constraint(all_weak[i][1]>>all_res[i][6])
         E.add_constraint(all_weak[i][2]>>all_res[i][5])
@@ -152,13 +152,9 @@ def example_theory():
 if __name__ == "__main__":
 
     T = example_theory()
-    P = T
-    P = P.compile()
-    # Don't compile until you're finished adding all your constraints!
     game_system.game(T, teammates, opponents_arr, all_weak, all_res)
     T = T.compile()
-    # After compilation (and only after), you can check some of the properties
-    # of your model:
+
     print("\nSatisfiable: %s" % T.satisfiable())
     #print("# Solutions: %d" % count_solutions(T))
     print("   Solution: %s" % T.solve())
